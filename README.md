@@ -1,6 +1,7 @@
 ![Language](https://img.shields.io/badge/language-C-blue)
 ![Platform](https://img.shields.io/badge/platform-AVR%20ATmega328P-orange)
 ![Status](https://img.shields.io/badge/status-in--progress-yellow)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 # AVR Bare-Metal Drivers
 
@@ -8,6 +9,7 @@ Register-level peripheral drivers for the **ATmega328P**, written in pure C with
 
 ## Table of Contents
 - [Overview](#overview)
+- [Demo](#demo)
 - [Repository Structure](#repository-structure)
 - [Hardware & Toolchain](#hardware--toolchain)
 - [Building and Flashing](#building-and-flashing)
@@ -25,6 +27,20 @@ Two drivers are currently implemented:
 - **UART** — polling-based serial transmit over USART0 at a configurable baud rate.
 
 `main.c` is a working demo: it configures `PB5` as an output and continuously transmits a string over UART once per second.
+
+## Demo
+
+**Board running the flashed firmware:**
+
+![Board running the firmware](assets/board.jpg)
+
+**Build and flash via `make all` / `make flash`:**
+
+![avr-gcc build and avrdude flash output](assets/build-flash.png)
+
+**UART output in Serial Monitor (9600 baud), confirming `UART_SendString` works:**
+
+![Serial Monitor receiving UART output](assets/serial-monitor.png)
 
 ## Repository Structure
 
@@ -120,7 +136,7 @@ Ports: `GPIO_PORT_B`, `GPIO_PORT_C`, `GPIO_PORT_D` — Pins: `GPIO_PIN_0` – `G
 
 ## License
 
-No license file is included yet. Add a `LICENSE` (e.g. MIT) if you want to make the reuse terms explicit.
+This project is licensed under the [MIT License](LICENSE).
 
 ## Author
 
