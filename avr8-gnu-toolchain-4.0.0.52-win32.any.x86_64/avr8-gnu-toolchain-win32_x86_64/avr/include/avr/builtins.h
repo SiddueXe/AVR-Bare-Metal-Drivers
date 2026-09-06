@@ -1,0 +1,120 @@
+/* Copyright (c) 2008 Anatoly Sokolov
+   Copyright (c) 2010 Joerg Wunsch
+   All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions are met:
+
+   * Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+
+   * Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in
+     the documentation and/or other materials provided with the
+     distribution.
+
+   * Neither the name of the copyright holders nor the names of
+     contributors may be used to endorse or promote products derived
+     from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  POSSIBILITY OF SUCH DAMAGE. */
+
+/* $Id$ */
+
+/*
+   avr/builtins.h - Intrinsic functions built into the compiler
+ */
+ 
+#ifndef _AVR_BUILTINS_H_
+#define _AVR_BUILTINS_H_
+
+#ifndef __HAS_DELAY_CYCLES
+#define __HAS_DELAY_CYCLES 1
+#endif
+
+/* For GCC built-ins, we should not define prototypes,
+   hence only document that stuff.  */
+#ifdef __DOXYGEN__
+
+/** \file */
+/** \defgroup avr_builtins <avr/builtins.h>: avr-gcc builtins documentation
+    \code #include <avr/builtins.h> \endcode
+
+    \note This file only documents some avr-gcc builtins.
+    For functions built-in in the compiler, there should be no
+    prototype declarations.
+
+    See also the
+    <a href="https://gcc.gnu.org/onlinedocs/gcc/AVR-Built-in-Functions.html"
+       >GCC documentation</a> for a full list of avr-gcc builtins.
+*/
+
+/**
+    \ingroup avr_builtins
+
+    Enables interrupts by setting the global interrupt mask.  */
+extern void __builtin_avr_sei(void);
+
+/**
+    \ingroup avr_builtins
+
+    Disables all interrupts by clearing the global interrupt mask.  */
+extern void __builtin_avr_cli(void);
+
+/**
+    \ingroup avr_builtins
+
+    Emits a \c SLEEP instruction.  */
+
+extern void __builtin_avr_sleep(void);
+
+/**
+    \ingroup avr_builtins
+
+    Emits a WDR (watchdog reset) instruction.  */
+extern void __builtin_avr_wdr(void);
+
+/**
+    \ingroup avr_builtins
+
+    Emits a SWAP (nibble swap) instruction on __b.  */
+extern uint8_t __builtin_avr_swap(uint8_t __b);
+
+/**
+    \ingroup avr_builtins
+
+    Emits an FMUL (fractional multiply unsigned) instruction.  */
+extern uint16_t __builtin_avr_fmul(uint8_t __a, uint8_t __b);
+
+/**
+    \ingroup avr_builtins
+
+    Emits an FMUL (fractional multiply signed) instruction.  */
+extern int16_t __builtin_avr_fmuls(int8_t __a, int8_t __b);
+
+/**
+    \ingroup avr_builtins
+
+    Emits an FMUL (fractional multiply signed with unsigned) instruction.  */
+extern int16_t __builtin_avr_fmulsu(int8_t __a, uint8_t __b);
+
+#if __HAS_DELAY_CYCLES
+/**
+    \ingroup avr_builtins
+
+    Emits a sequence of instructions causing the CPU to spend
+    \c __n cycles on it.  */
+extern void __builtin_avr_delay_cycles(uint32_t __n);
+#endif
+#endif /* DOXYGEN */
+#endif /* _AVR_BUILTINS_H_ */
