@@ -1,9 +1,13 @@
+<img src="assets/logo.svg" align="left" width="110" alt="Chip logo"/>
+
+# Arduino Uno Bare-Metal Drivers
+
+<br clear="left"/>
+
 ![Language](https://img.shields.io/badge/language-C-blue)
 ![Platform](https://img.shields.io/badge/platform-AVR%20ATmega328P-orange)
 ![Status](https://img.shields.io/badge/status-in--progress-yellow)
 ![License](https://img.shields.io/badge/license-MIT-green)
-
-# AVR Bare-Metal Drivers
 
 Register-level peripheral drivers for the **ATmega328P**, written in pure C with no Arduino core, no HAL, and no external libraries beyond `avr-libc`. The goal is direct control of hardware registers (`DDRx`, `PORTx`, `UCSRx`, `UBRRx`, `UDRx`) as a foundation for embedded systems work beyond the Arduino ecosystem.
 
